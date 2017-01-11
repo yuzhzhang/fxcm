@@ -23,7 +23,7 @@ buff = ''
 
 orderid = 0
 def request_mkt():
-    global conn
+    global conn, orderid
     if conn:
         conn.send('[MKT]\n')
 	orderid += 1
