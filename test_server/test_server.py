@@ -26,8 +26,8 @@ def request_mkt():
     global conn
     if conn:
         conn.send('[MKT]\n')
-		orderid += 1
-		conn.send("[ORD,A%03d,XXX/YYY,%9.5f, %9.5f]" % (orderid, random.random()*100., random.random()*100.))
+	orderid += 1
+	conn.send("[ORD,A%03d,XXX/YYY,%9.5f, %9.5f]" % (orderid, random.random()*100., random.random()*100.))
 
 sync_timer = PeriodicTimer(5, 0, request_mkt)
 
