@@ -7,6 +7,8 @@ import threading
 import multiprocessing
 import signal
 
+import random
+
 from ptimer import PeriodicTimer
 
 
@@ -19,11 +21,13 @@ conn = None
 BUFF_SIZE = 4096
 buff = ''
 
-
+orderid = 0
 def request_mkt():
     global conn
     if conn:
         conn.send('[MKT]\n')
+		orderid += 1
+		conn.send("[ORD,A%03d,XXX/YYY,%9.5f, %9.5f]" % (orderid, random.random()*100., random.random()*100.))
 
 sync_timer = PeriodicTimer(5, 0, request_mkt)
 
